@@ -37,7 +37,7 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> $(hostname -f)</a></li>
+      	<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $hostname; ?></a></li>
       </ul>
     </div>
   </div>
@@ -50,7 +50,10 @@
 </div>
   
   <?php
-$url = "http://169.254.169.254/latest/meta-data/instance-id";
+$url = "http://169.254.169.254/latest/meta-data/hostname";
+$hostname = file_get_contents($url);
+  
+  $url = "http://169.254.169.254/latest/meta-data/instance-id";
 $instance_id = file_get_contents($url);
 
 $url = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
@@ -65,8 +68,8 @@ $userdata = file_get_contents($url);
   
   <div class="container-fluid">
     <ul>
-      <li><strong>Hostname:</strong> </li>
-      <li><strong>Instance ID:</strong> <?php echo $instance_id; ?>/li>
+      <li><strong>Hostname: </strong> <?php echo $hostname; ?></li>
+      <li><strong>Instance ID:</strong> <?php echo $instance_id; ?></li>
       <li><strong>Availability Zone:</strong> <?php echo $availability_zone; ?></li>
     </ul>
   </div>
