@@ -73,31 +73,12 @@ $userdata = file_get_contents($url);
       <li><strong>Availability Zone:</strong> <?php echo $availability_zone; ?></li>
     </ul>
   </div>
-  
-<div class="container-fluid text-center">
-    <h3>Available Courses</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>Title</th>
-                <th>Schedule</th>
-                <th>Credits</th>
-                <th>Seats</th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            
-          </tr>
-        </tbody>
-    </table>
-</div>
+ 
 
 <br><br>
 
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>Octank University &copy; 2022</p>
 </footer>
 
 </body>
