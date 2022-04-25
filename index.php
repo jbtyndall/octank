@@ -71,8 +71,7 @@ $url = "http://169.254.169.254/latest/user-data";
 $userdata = file_get_contents($url);
 ?>
 
-  <div class="container-fluid text-center">
-    <h3>Webserver Details</h3>
+  <div class="container-fluid">
     
     <ul style="font-size:3vw">
       <li><strong>Instance ID:</strong> <?php echo $instance_id; ?></li>
