@@ -75,7 +75,7 @@ $userdata = file_get_contents($url);
     
     <ul style="font-size:3vw">
       <li><strong>Instance ID:</strong> <?php echo $instance_id; ?></li>
-      <li><strong>Hostname:</strong> <?php echo $ip_address; ?></li>
+      <li><strong>IP address:</strong> <?php echo $ip_address; ?></li>
       <li><strong>Hostname:</strong> <?php echo $hostname; ?></li>
       <li><strong>Availability Zone:</strong> <?php echo $availability_zone; ?></li>
     </ul>
