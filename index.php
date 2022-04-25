@@ -37,7 +37,7 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $hostname; ?></a></li>
+      	<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> $(hostname -f)</a></li>
       </ul>
     </div>
   </div>
@@ -45,15 +45,12 @@
 
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Octank University</h1>
+    <h2>Octank University AWS Demo</h2>
   </div>
 </div>
   
   <?php
-$url = "http://169.254.169.254/latest/meta-data/hostname";
-$hostname = file_get_contents($url);
-  
-  $url = "http://169.254.169.254/latest/meta-data/instance-id";
+$url = "http://169.254.169.254/latest/meta-data/instance-id";
 $instance_id = file_get_contents($url);
 
 $url = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
@@ -67,18 +64,37 @@ $userdata = file_get_contents($url);
 ?>
   
   <div class="container-fluid">
-    <ul>
-      <li><strong>Hostname: </strong> <?php echo $hostname; ?></li>
+    <ul style="font-size:20vw">
+      <li><strong>Hostname:</strong> <?php echo $hostname; ?></li>
       <li><strong>Instance ID:</strong> <?php echo $instance_id; ?></li>
       <li><strong>Availability Zone:</strong> <?php echo $availability_zone; ?></li>
     </ul>
   </div>
- 
+  
+<div class="container-fluid text-center">
+    <h3>Available Courses</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Schedule</th>
+                <th>Credits</th>
+                <th>Seats</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+          </tr>
+        </tbody>
+    </table>
+</div>
 
 <br><br>
 
 <footer class="container-fluid text-center">
-  <p>Octank University &copy; 2022</p>
+  <p>Footer Text</p>
 </footer>
 
 </body>
