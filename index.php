@@ -1,10 +1,5 @@
-<?php
-include_once('connection.php');
-$query = "select * from course";
-$courses = mysql_query($query);
-?>
+<?php include "../inc/dbinfo.inc"; ?>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,13 +10,11 @@ $courses = mysql_query($query);
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
 
-    /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
       padding: 25px;
@@ -30,6 +23,16 @@ $courses = mysql_query($query);
 </head>
 
 <body>
+  
+  <?php
+
+  /* Connect to MySQL and select the database. */
+  $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+
+  if (mysqli_connect_errno()) echo "Failed to connect to MySQL: " . mysqli_connect_error();
+
+  $database = mysqli_select_db($connection, DB_DATABASE);
+?>
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -89,28 +92,37 @@ $userdata = file_get_contents($url);
 
   <br><br>
 
-  <div>
+  <div class="container">
+        <div class="jumbotron">
+        <div class="container text-center">
+                <h2>Available Courses</h2>
+        </div>
+        </div>  
   <table class="table table-striped">
     <tr>
       <th>Catalog Number</th>
       <th>Title</th>
       <th>Schedule</th>
       <th>Credits</th>
-    </tr>
+  </tr>
     <?php
-      while($rows=mysql_fetch_assoc($courses))
+      $result = mysqli_query($connection, "select * from course");
+
+      while($rows=mysqli_fetch_row($result))
       {
-    ?>
-      <tr>
-        <td><?php echo $rows['catalogNumber']; ?></td>
-        <td><?php echo $rows['courseTitle']; ?></td>
-        <td><?php echo $rows['schedule']; ?></td>
-        <td><?php echo $rows['credits']; ?></td>
-      </tr>
-    <?php
+       	echo "<tr>";
+        echo "<td>",$rows[1], "</td>",
+             "<td>",$rows[2], "</td>",
+             "<td>",$rows[3], "</td>",
+             "<td>",$rows[4], "</td>";
+        echo "</tr>";
       }
     ?>
   </table>
+  <?php
+    mysqli_free_result($result);
+    mysqli_close($connection);
+  ?>
   </div>
 
   <footer class="container-fluid text-center">
