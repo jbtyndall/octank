@@ -1,3 +1,9 @@
+<?php
+include_once('connection.php');
+$query = "select * from course";
+$courses = mysql_query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +88,30 @@ $userdata = file_get_contents($url);
   </div>
 
   <br><br>
+
+  <div>
+  <table class="table table-striped">
+    <tr>
+      <th>Catalog Number</th>
+      <th>Title</th>
+      <th>Schedule</th>
+      <th>Credits</th>
+    </tr>
+    <?php
+      while($rows=mysql_fetch_assoc($courses))
+      {
+    ?>
+      <tr>
+        <td><?php echo $rows['catalogNumber']; ?></td>
+        <td><?php echo $rows['courseTitle']; ?></td>
+        <td><?php echo $rows['schedule']; ?></td>
+        <td><?php echo $rows['credits']; ?></td>
+      </tr>
+    <?php
+      }
+    ?>
+  </table>
+  </div>
 
   <footer class="container-fluid text-center">
     <p>Octank University &copy; 2022</p>
