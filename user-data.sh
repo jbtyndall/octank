@@ -14,7 +14,7 @@ find /var/www -type f -exec chmod 0664 {} \;
 cd /var/www
 mkdir inc
 cd inc
-wget https://raw.githubusercontent.com/jbtyndall/octank/main/dbinfo.inc
+wget https://raw.githubusercontent.com/jbtyndall/octank-private/main/dbinfo.inc
 cd /var/www/html
 wget https://raw.githubusercontent.com/jbtyndall/octank/main/index.php
 wget https://raw.githubusercontent.com/jbtyndall/octank/main/waf.php
